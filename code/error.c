@@ -9,28 +9,40 @@
 // Error accumulated register
 void Err_AccumRd(void) 
 {	
-	printf("\nError Accumulated Register:\n");
-
+	// enable ERR_ACC reg
 	uint8_t data[1];
 	data[0] = ERR_ACC;
+	i2cWrite(data, 1);
 
 	// read i2c data
-	i2cWrite(data, 1);
 	uint8_t* rdData = i2cRead(1);
 
+	printf("\nError Accumulated Register:\n");
 	errDisplay(rdData);
 }
 
 // Error handler clear
 void Err_ClearAcc(void) 
 {
+	// enable ERR_H_CLR reg
 	uint8_t data[2];
 	data[0] = ERR_H_CLR;
+	i2cWrite(data, 1);
 
-	data[1] = 0x34;
+	// read value in ERR_H_CLR
+	uint8_t* rdData = i2cRead(1);
+
+	// write enable bit
+	*rdData |= (1 << ERR_H_CLR_BIT);
+	data[1] = *rdData;
 	i2cWrite(data, 2);
 
-	data[1] = 0x30;
+	// read value in ERR_H_CLR
+	rdData = i2cRead(1);
+
+	// write disable bit
+	*rdData &= ~(1 << ERR_H_CLR_BIT);
+	data[1] = *rdData;
 	i2cWrite(data, 2);
 
 	printf("cleared accumulated error register\n");
@@ -42,14 +54,16 @@ void Err_LiveRd(void)
 
 	printf("\nError Live Register:\n");
 
+	// enable ERR_H_CLR reg
 	uint8_t data[1];
 	data[0] = ERR_LIVE;
+	i2cWrite(data, 1);
+	uint8_t* rdData;
 
 	while(1)
 	{
 		// read i2c data
-		i2cWrite(data, 1);
-		uint8_t* rdData = i2cRead(1);
+		rdData = i2cRead(1);
 
 		if (!*rdData)
 		{

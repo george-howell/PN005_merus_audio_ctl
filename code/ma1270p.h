@@ -151,4 +151,9 @@
 // live error reg
 #define ERR_LIVE			((uint8_t)0x7C) // error
 
+/*
+	error register bit values
+*/
+#define ERR_H_CLR_BIT		2
+
 #endif
