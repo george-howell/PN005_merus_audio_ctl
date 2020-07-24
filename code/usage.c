@@ -28,7 +28,7 @@ void usage(void)
 {
 	printf("MA1270P_CTL\n");
 	printf("Usage:\n");
-	printf("  ma1270p_ctl -bde [opt]\n");
+	printf("  ma1270p_ctl -bdem [opt]\n");
 	printf("\n");
 	printf("Options:\n");
 	printf("  -b: i2c bus (default=1)\n"); 
@@ -39,6 +39,10 @@ void usage(void)
 	printf("      [acc] - accumulated errors\n");
 	printf("      [liv] - live errors\n");
 	printf("      [clr] - clears accumulated errors\n");
+	printf("  -m: channel config monitors\n"); 
+	printf("      [ch0] - get channel 0 configuration\n");
+	printf("      [ch1] - get channel 0 configuration\n");
+	printf("      [msel] - get msel output configuration\n");
 	printf("\n");
 
 	exit(EXIT_FAILURE);

@@ -6,6 +6,7 @@
 #include "usage.h"
 #include "error.h"
 #include "i2c.h"
+#include "chMonitor.h"
 
 int main(int argc, char** argv)
 {
@@ -14,7 +15,7 @@ int main(int argc, char** argv)
 	// parse input arguments
 	parseData = parseArgs(argc, argv);
 
-	printf("devAddr: 0x%x; bus: %d\n",  parseData->devAddr, parseData->bus);
+	printf("Setup:\n   devAddr: 0x%x; bus: %d\n",  parseData->devAddr, parseData->bus);
 
 	// open i2c device
  	i2cOpen(parseData->bus);
@@ -34,6 +35,18 @@ int main(int argc, char** argv)
 		} else if (!strcmp(parseData->arg, "clr"))
 		{
 			Err_ClearAcc();
+		}
+	} else if (parseData->opt=='m')
+	{
+		if (!strcmp(parseData->arg, "ch0"))
+		{
+			Mon_Ch0();
+		} else if (!strcmp(parseData->arg, "ch1"))
+		{
+			Mon_Ch1();
+		} else if (!strcmp(parseData->arg, "msel"))
+		{
+			Mon_MSEL();
 		}
 	}
 

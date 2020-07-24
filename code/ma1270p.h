@@ -156,4 +156,27 @@
 */
 #define ERR_H_CLR_BIT		2
 
+/*
+	monitor register bit values
+*/
+
+// frequency and power modes
+#define MON_FREQ_M_BITS 	((uint8_t)0x70)
+#define MON_POW_M_BITS 		((uint8_t)0x03)
+
+#define MON_OCP_MON			0
+#define MON_FLY_1 			1
+#define MON_FLY_2 			2
+#define MON_PVDD_OK 		3
+#define MON_VDD_OK 			4
+#define MON_MUTE 			5
+
+// MSEL bits
+#define MON_MSEL_BITS		((uint8_t)0x7)
+// THESE NEED TO BE DOUBLE CHECKED!!! - no avaliable info
+#define MON_BTL				1
+#define MON_SE 				2
+#define MON_BTL_SE 			3
+#define MON_PBTL 			4
+
 #endif
