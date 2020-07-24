@@ -15,49 +15,68 @@
 #include "ma1270p.h"
 #include "millisleep.h"
 
-// Error accumulated register
+/*
+	API's
+*/
+
+/*
+* @fn				- Err_AccumRd
+* 
+* @brief			- reads the accumulated error register
+*
+* @param[in]		- n/a
+*
+* @return			-
+*
+*/
 void Err_AccumRd(void) 
 {	
-	// enable ERR_ACC reg
-	uint8_t data[1];
-	data[0] = ERR_ACC;
-	i2cWrite(data, 1);
-
-	// read i2c data
-	uint8_t* rdData = i2cRead(1);
+	// read ERR_ACC reg
+	uint8_t rdData = i2cEnRdByte(ERR_ACC);
 
 	printf("\nError Accumulated Register:\n");
 	errDisplay(rdData);
 }
 
-// Error handler clear
+/*
+* @fn				- Err_ClearAcc
+* 
+* @brief			- clears the accumulated error register
+*
+* @param[in]		- n/a
+*
+* @return			-
+*
+*/
 void Err_ClearAcc(void) 
 {
-	// enable ERR_H_CLR reg
-	uint8_t data[2];
-	data[0] = ERR_H_CLR;
-	i2cWrite(data, 1);
-
-	// read value in ERR_H_CLR
-	uint8_t* rdData = i2cRead(1);
+	// read ERR_ACC reg
+	uint8_t rdData = i2cEnRdByte(ERR_H_CLR);
 
 	// write enable bit
-	*rdData |= (1 << ERR_H_CLR_BIT);
-	data[1] = *rdData;
-	i2cWrite(data, 2);
+	rdData |= (1 << ERR_H_CLR_BIT);
+	i2cEnWrByte(ERR_H_CLR, rdData);
 
 	// read value in ERR_H_CLR
-	rdData = i2cRead(1);
+	rdData = i2cEnRdByte(ERR_H_CLR);
 
 	// write disable bit
-	*rdData &= ~(1 << ERR_H_CLR_BIT);
-	data[1] = *rdData;
-	i2cWrite(data, 2);
+	rdData &= ~(1 << ERR_H_CLR_BIT);
+	i2cEnWrByte(ERR_H_CLR, rdData);
 
 	printf("cleared accumulated error register\n");
 }
 
-// Error register
+/*
+* @fn				- Err_LiveRd
+* 
+* @brief			- reads the live error register every ~10ms
+*
+* @param[in]		- n/a
+*
+* @return			-
+*
+*/
 void Err_LiveRd(void) 
 {	
 
@@ -76,7 +95,7 @@ void Err_LiveRd(void)
 
 		if (!*rdData)
 		{
-			errDisplay(rdData);
+			errDisplay(*rdData);
 		}
 
 		// sleep for 100ms
@@ -84,46 +103,50 @@ void Err_LiveRd(void)
 	}
 }
 
+/*
+	GENERAL FUNCTIONS
+*/
+
 // display results
-void errDisplay(uint8_t* data)
+void errDisplay(uint8_t data)
 {
 	// if statement to determine specific error	
-	if ((*data >> 0) & 1)
+	if ((data >> 0) & 1)
 	{
 		printf("  err: flying capacitor over-voltage error\n");
 	}
 
-	if ((*data >> 1) & 1) 
+	if ((data >> 1) & 1) 
 	{
 		printf("  err: over-current protection\n");
 	}
 
-	if ((*data >> 2) & 1) 
+	if ((data >> 2) & 1) 
 	{
 		printf("  err: pll error\n");
 	}
 
-	if ((*data >> 3) & 1) 
+	if ((data >> 3) & 1) 
 	{
 		printf("  err: PVDD under-voltage protection\n");
 	}
 
-	if ((*data >> 4) & 1) 
+	if ((data >> 4) & 1) 
 	{
 		printf("  err: over-temperature warning\n");
 	}
 
-	if ((*data >> 5) & 1) 
+	if ((data >> 5) & 1) 
 	{
 		printf("  err: over-temperature error\n");
 	}
 
-	if ((*data >> 6) & 1) 
+	if ((data >> 6) & 1) 
 	{
 		printf("  err: pin-to-pin low impedance protection\n");
 	} 
 
-	if ((*data >> 7) & 1) 
+	if ((data >> 7) & 1) 
 	{
 		printf("  err: DC protection\n");
 	}

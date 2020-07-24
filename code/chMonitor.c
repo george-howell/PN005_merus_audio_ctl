@@ -37,42 +37,14 @@ void Mon_Ch0(void)
 	// initialise monitor data structure
 	monData_s* monData = (monData_s*) malloc(sizeof(monData_s));
 
-	/* 
-		Frequency and Power Mode 
-	*/
+	// Frequency and Power Mode 
+	monData->freqPowM = i2cEnRdByte(MON_REG_FP_CH0);
 
-	// enable reg
-	uint8_t wrData[2];
-	wrData[0] = MON_REG_FP_CH0;
-	i2cWrite(wrData, 1);
+	// Main
+	monData->main = i2cEnRdByte(MON_REG_CH0);
 
-	// read reg
-	uint8_t* rdData = i2cRead(1);
-	monData->freqPowM = *rdData;
-
-	/* 
-		Main 
-	*/
-
-	// enable reg
-	wrData[0] = MON_REG_CH0;
-	i2cWrite(wrData, 1);
-
-	// read reg
-	rdData = i2cRead(1);
-	monData->main = *rdData;
-
-	/* 
-		Modulation Index
-	*/
-
-	// enable reg
-	wrData[0] = MON_REG_MOD_CH0;
-	i2cWrite(wrData, 1);
-
-	// read reg
-	rdData = i2cRead(1);
-	monData->mod = *rdData;
+	// Modulation Index
+	monData->mod = i2cEnRdByte(MON_REG_MOD_CH0);
 
 	printf("Monitor Register Channel 0: \n");
 	dispMonData(monData);
@@ -95,42 +67,14 @@ void Mon_Ch1(void)
 	// initialise monitor data structure
 	monData_s* monData = (monData_s*) malloc(sizeof(monData_s));
 
-	/* 
-		Frequency and Power Mode 
-	*/
+	// Frequency and Power Mode 
+	monData->freqPowM = i2cEnRdByte(MON_REG_FP_CH1);
 
-	// enable reg
-	uint8_t wrData[2];
-	wrData[0] = MON_REG_FP_CH1;
-	i2cWrite(wrData, 1);
+	// Main
+	monData->main = i2cEnRdByte(MON_REG_CH1);
 
-	// read reg
-	uint8_t* rdData = i2cRead(1);
-	monData->freqPowM = *rdData;
-
-	/* 
-		Main 
-	*/
-
-	// enable reg
-	wrData[0] = MON_REG_CH1;
-	i2cWrite(wrData, 1);
-
-	// read reg
-	rdData = i2cRead(1);
-	monData->main = *rdData;
-
-	/* 
-		Modulation Index
-	*/
-
-	// enable reg
-	wrData[0] = MON_REG_MOD_CH1;
-	i2cWrite(wrData, 1);
-
-	// read reg
-	rdData = i2cRead(1);
-	monData->mod = *rdData;
+	// Modulation Index
+	monData->mod = i2cEnRdByte(MON_REG_MOD_CH1);
 
 	printf("Monitor Register Channel 0: \n");
 	dispMonData(monData);
@@ -150,32 +94,26 @@ void Mon_Ch1(void)
 
 void Mon_MSEL(void)
 {
-	// enable msel_mon reg
-	uint8_t wrData[2];
-	wrData[0] = MON_OUT_CONFIG;
-	i2cWrite(wrData, 1);
-
-	// read reg
-	uint8_t* rdData = i2cRead(1);
+	uint8_t rdData = i2cEnRdByte(MON_OUT_CONFIG);
 
 	// get relevant bits
-	*rdData &= MON_MSEL_BITS;
+	rdData &= MON_MSEL_BITS;
 
 	// determine config
 	printf("Monitor MSEL Register:\n");
-	if (*rdData == MON_BTL)
+	if (rdData == MON_BTL)
 	{
 		printf("   BTL\n");
 
-	} else if (*rdData == MON_SE)
+	} else if (rdData == MON_SE)
 	{
 		printf("   SE\n");
 
-	} else if (*rdData == MON_BTL_SE)
+	} else if (rdData == MON_BTL_SE)
 	{
 		printf("   BTL/SE\n");
 
-	} else if (*rdData == MON_PBTL)
+	} else if (rdData == MON_PBTL)
 	{
 		printf("   PBTL\n");
 
@@ -192,16 +130,12 @@ void Mon_MSEL(void)
 // display the channel monitor data
 void dispMonData(monData_s *monData)
 {
-	/* 
-		Frequency and Power Mode 
-	*/
+	/* Frequency and Power Mode */
 
 	printf("   Freq Mode: 0x%.2x\n", (monData->freqPowM & MON_FREQ_M_BITS));
 	printf("   Power Mode: 0x%.2x\n", (monData->freqPowM & MON_POW_M_BITS));
 
-	/* 
-		Main 
-	*/
+	/* Main */
 
 	if ((monData->main >> MON_OCP_MON) & 1)
 	{
@@ -246,9 +180,7 @@ void dispMonData(monData_s *monData)
 		printf("   Mute: unmuted\n");
 	}
 
-	/* 
-		Modulation Index
-	*/
+	/* Modulation Index */
 
 	printf("   Mod Index: 0x%.2x\n", monData->mod);
 }

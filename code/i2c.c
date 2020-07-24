@@ -57,9 +57,6 @@ void i2cInit(uint8_t devAddr)
 // i2c write data
 void i2cWrite (uint8_t* wrData, uint32_t noBytes) 
 {
-	// convert to pointer
-	// uint8_t* wrDataPtr = (uint8_t*) malloc(sizeof(uint8_t)*noBytes);
-	// *wrDataPtr = wrData;
 
 	// writes to the command address
 	if (write(g_i2cFile, wrData, noBytes) != noBytes) {
@@ -86,3 +83,26 @@ uint8_t* i2cRead (uint32_t noBytes)
 
 	return outData;
 }
+
+// i2c enable register and read 1 byte
+uint8_t i2cEnRdByte(uint8_t regAddr)
+{
+	// enable reg
+	uint8_t wrData[1] = {regAddr};
+	i2cWrite(wrData, 1);
+
+	// read reg
+	uint8_t* rdData = i2cRead(1);
+
+	return *rdData;
+}
+
+// i2c enable register and write 1 byte
+void i2cEnWrByte(uint8_t regAddr, uint8_t wrByte)
+{
+	// enable reg and write byte
+	uint8_t wrData[2] = {regAddr, wrByte};
+	i2cWrite(wrData, 2);
+
+}
+
