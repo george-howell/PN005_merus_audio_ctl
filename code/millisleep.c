@@ -1,3 +1,12 @@
+/* millisleep.c
+*
+* millisecond sleep function
+*
+* Created By: G. Howell
+* Created On: 20/07/2020
+*
+*/
+
 #include <stdio.h>
 #include <stdint.h>
 #include <time.h>

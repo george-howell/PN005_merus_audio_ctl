@@ -1,8 +1,10 @@
-/* I2C.C
+/* i2c.c
+*
 * i2c functions using standard linux i2c driver module
 *
 * Created By: G. Howell
 * Created On: 08/07/2020
+*
 */
 
 #include <stdlib.h>

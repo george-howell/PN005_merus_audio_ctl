@@ -1,3 +1,12 @@
+/* parse.c
+*
+* parse input data
+*
+* Created By: G. Howell
+* Created On: 23/07/2020
+*
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>

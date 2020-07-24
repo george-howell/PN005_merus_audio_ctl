@@ -1,3 +1,12 @@
+/* usage.c
+*
+* parse input data
+*
+* Created By: G. Howell
+* Created On: 18/07/2020
+*
+*/
+
 #include "usage.h"
 #include <stdio.h>
 #include <stdlib.h>

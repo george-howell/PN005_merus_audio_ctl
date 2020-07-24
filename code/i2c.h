@@ -1,3 +1,12 @@
+/* i2c.h
+*
+* i2c functions using standard linux i2c driver module
+*
+* Created By: G. Howell
+* Created On: 08/07/2020
+*
+*/
+
 #ifndef INC_I2C_H_
 #define INC_I2C_H_
 

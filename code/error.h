@@ -1,3 +1,12 @@
+/* error.h
+*
+* API's handles for the error register functions
+*
+* Created By: G. Howell
+* Created On: 23/07/2020
+*
+*/
+
 #ifndef INC_ERROR_H_
 #define INC_ERROR_H_
 

@@ -1,4 +1,5 @@
-/* MA1270P HEADER FILE
+/* ma1270p.h
+*
 * full header file for the Merus Audio MA1270P amplifier
 *
 * Created By: George Howell

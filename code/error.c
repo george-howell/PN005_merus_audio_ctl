@@ -1,3 +1,12 @@
+/* error.c
+*
+* API's handles for the error register functions
+*
+* Created By: G. Howell
+* Created On: 23/07/2020
+*
+*/
+
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>
