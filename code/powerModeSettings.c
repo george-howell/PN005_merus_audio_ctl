@@ -62,6 +62,25 @@ void PMode_ReadAll(void)
 	rdData = i2cEnRdByte(PM_3_2);
 	printf("   Thres PM3->PM2: %d\n", rdData);
 
+	// read Select Power Mode Profile setting
+	rdData = i2cEnRdByte(PM_PROF);
+	printf("   Power Mode Profile: %d\n", (rdData & PM_PROF_BITS));
+
+	// read Power Mode Profile configuration
+	rdData = i2cEnRdByte(PM_PROF_CONFIG);
+	
+	uint8_t pmBits = ((rdData>>PM_PROF_CFG_1) & PM_PROF_CFG_BITS);
+	printf("   PM1 Scheme: ");
+	pmProfDisp(pmBits);
+
+	pmBits = ((rdData>>PM_PROF_CFG_2) & PM_PROF_CFG_BITS);
+	printf("   PM2 Scheme: ");
+	pmProfDisp(pmBits);
+
+	pmBits = ((rdData>>PM_PROF_CFG_3) & PM_PROF_CFG_BITS);
+	printf("   PM3 Scheme: ");
+	pmProfDisp(pmBits);
+
 	// read Soft-clipping and over- current protection latching
 	rdData = i2cEnRdByte(SCLIP_OCPROC);
 	if ((rdData>>PM_CLIP) & 1)
@@ -80,3 +99,23 @@ void PMode_ReadAll(void)
 	}
 
 }
+
+void pmProfDisp(uint8_t pmBits)
+{
+	if (pmBits==0)
+	{
+		printf("A\n");
+	} else if (pmBits==1)
+	{
+		printf("B\n");
+	} else if (pmBits==2)
+	{
+		printf("C\n");
+	} else
+	{
+		printf("D\n");
+	}
+}
+
+
+

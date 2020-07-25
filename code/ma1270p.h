@@ -162,6 +162,11 @@
 #define PM_MAN_BITS			((uint8_t)0x03)
 #define PM_CLIP				8
 #define PM_OCP				2
+#define PM_PROF_BITS 	 	((uint8_t)0x07)
+#define PM_PROF_CFG_1 	 	0
+#define PM_PROF_CFG_2 	 	3
+#define PM_PROF_CFG_3 	 	5
+#define PM_PROF_CFG_BITS 	((uint8_t)0x03)
 
 /*
 	error register bit values
