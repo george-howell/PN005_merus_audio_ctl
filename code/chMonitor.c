@@ -91,7 +91,6 @@ void Mon_Ch1(void)
 * @return			-
 *
 */
-
 void Mon_MSEL(void)
 {
 	uint8_t rdData = i2cEnRdByte(MON_OUT_CONFIG);

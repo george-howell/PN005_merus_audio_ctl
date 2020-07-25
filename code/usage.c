@@ -56,6 +56,9 @@ void usage(void)
 	printf("      [rdAll] - read all parameter values\n");
 	printf("  -a: audio protection registers\n"); 
 	printf("      [rdAll] - read all parameter values\n");
+	printf("      [clrOCP] - clear the OCP latch\n");
+	printf("  -i: i2s format\n"); 
+	printf("      [rdAll] - read all parameter values\n");
 	printf("\n");
 
 	exit(EXIT_FAILURE);

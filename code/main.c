@@ -9,6 +9,7 @@
 #include "chMonitor.h"
 #include "powerModeSettings.h"
 #include "audioProtect.h"
+#include "i2sFmt.h"
 
 int main(int argc, char** argv)
 {
@@ -61,6 +62,15 @@ int main(int argc, char** argv)
 		if (!strcmp(parseData->arg, "rdAll"))
 		{
 			AP_ReadAll();
+		} else if (!strcmp(parseData->arg, "clrOCP"))
+		{
+			AP_ClrOCP();
+		}
+	} else if (parseData->opt=='i')
+	{
+		if (!strcmp(parseData->arg, "rdAll"))
+		{
+			I2S_ReadAll();
 		}
 	}
 

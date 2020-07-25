@@ -88,10 +88,22 @@
 */
 
 // pcm word format
-#define PMC_WD_FMT			((uint8_t)0x35) // i2s_format
+#define I2S_PCM_FMT			((uint8_t)0x35) // i2s_format
 
 // other i2c config paramters
 #define I2S_CNF_1			((uint8_t)0x36) // i2s_rightfirst, i2s_framesize, i2s_order, i2s_ws_pol, i2s_sck_pol
+
+/*
+	error register bit values
+*/
+
+#define I2S_PCM_BITS		((uint8_t)0x07)
+#define I2S_RFIRST			5
+#define I2S_FSIZE			3
+#define I2S_FSIZE_BITS		((uint8_t)0x03)
+#define I2S_ORDER			2
+#define I2S_WS_POL			1
+#define I2S_SCK_POL			0
 
 /*
 	volume

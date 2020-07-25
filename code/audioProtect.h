@@ -14,5 +14,6 @@
 	API's
 */
 void AP_ReadAll(void);
+void AP_ClrOCP(void);
 
 #endif
