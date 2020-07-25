@@ -44,17 +44,22 @@
 #define PM_PROF_CONFIG		((uint8_t)0x1E) // PM3_man, PM2_man, PM1_man
 
 /*
-	i2s config
+	power monitor bit values
 */
 
-// pcm word format
-#define PMC_WD_FMT			((uint8_t)0x35) // i2s_format
-
-// other i2c config paramters
-#define I2S_CNF_1			((uint8_t)0x36) // i2s_rightfirst, i2s_framesize, i2s_order, i2s_ws_pol, i2s_sck_pol
+#define PM_MAN_PM			6
+#define PM_MAN				4
+#define PM_MAN_BITS			((uint8_t)0x03)
+#define PM_CLIP				7
+#define PM_OCP				1
+#define PM_PROF_BITS 	 	((uint8_t)0x07)
+#define PM_PROF_CFG_1 	 	0
+#define PM_PROF_CFG_2 	 	2
+#define PM_PROF_CFG_3 	 	4
+#define PM_PROF_CFG_BITS 	((uint8_t)0x03)
 
 /*
-	general
+	audio protection control registers
 */
 
 // over-current protection latch clear
@@ -64,10 +69,29 @@
 #define AUD_IN_MODE			((uint8_t)0x25) // audio_in_mode
 
 // dc protection
-#define DC_PROC				((uint8_t)0x26) // Eh_dcShdn
+#define DC_PROT				((uint8_t)0x26) // Eh_dcShdn
 
 // audio in mode overwrite
 #define AUD_IN_MODE_OW		((uint8_t)0x27) // audio_in_mode_ext
+
+/*
+	audio protection bit values
+*/
+#define	AP_AI_MODE			5
+#define	AP_AI_MODE_BITS		((uint8_t)0x03)
+#define	AP_AI_MODE_OVER		5
+#define AP_DC_PROC			2
+#define AP_OCP_CLR			7
+
+/*
+	i2s config
+*/
+
+// pcm word format
+#define PMC_WD_FMT			((uint8_t)0x35) // i2s_format
+
+// other i2c config paramters
+#define I2S_CNF_1			((uint8_t)0x36) // i2s_rightfirst, i2s_framesize, i2s_order, i2s_ws_pol, i2s_sck_pol
 
 /*
 	volume
@@ -152,22 +176,6 @@
 // live error reg
 #define ERR_LIVE			((uint8_t)0x7C) // error
 
-
-/*
-	power monitor bit values
-*/
-
-#define PM_MAN_PM			7
-#define PM_MAN				5
-#define PM_MAN_BITS			((uint8_t)0x03)
-#define PM_CLIP				8
-#define PM_OCP				2
-#define PM_PROF_BITS 	 	((uint8_t)0x07)
-#define PM_PROF_CFG_1 	 	0
-#define PM_PROF_CFG_2 	 	3
-#define PM_PROF_CFG_3 	 	5
-#define PM_PROF_CFG_BITS 	((uint8_t)0x03)
-
 /*
 	error register bit values
 */
@@ -178,7 +186,8 @@
 */
 
 // frequency and power modes
-#define MON_FREQ_M_BITS 	((uint8_t)0x70)
+#define MON_FREQ_M 			4
+#define MON_FREQ_M_BITS 	((uint8_t)0x07)
 #define MON_POW_M_BITS 		((uint8_t)0x03)
 
 #define MON_OCP_MON			0

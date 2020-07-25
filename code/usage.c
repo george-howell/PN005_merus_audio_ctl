@@ -37,7 +37,7 @@ void usage(void)
 {
 	printf("MA1270P_CTL\n");
 	printf("Usage:\n");
-	printf("  ma1270p_ctl -bdem [opt]\n");
+	printf("  ma1270p_ctl -bdempa [opt]\n");
 	printf("\n");
 	printf("Options:\n");
 	printf("  -b: i2c bus (default=1)\n"); 
@@ -53,6 +53,8 @@ void usage(void)
 	printf("      [ch1] - get channel 0 configuration\n");
 	printf("      [msel] - get msel output configuration\n");
 	printf("  -p: power mode config\n"); 
+	printf("      [rdAll] - read all parameter values\n");
+	printf("  -a: audio protection registers\n"); 
 	printf("      [rdAll] - read all parameter values\n");
 	printf("\n");
 

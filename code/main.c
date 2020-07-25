@@ -8,6 +8,7 @@
 #include "i2c.h"
 #include "chMonitor.h"
 #include "powerModeSettings.h"
+#include "audioProtect.h"
 
 int main(int argc, char** argv)
 {
@@ -54,6 +55,12 @@ int main(int argc, char** argv)
 		if (!strcmp(parseData->arg, "rdAll"))
 		{
 			PMode_ReadAll();
+		}
+	} else if (parseData->opt=='a')
+	{
+		if (!strcmp(parseData->arg, "rdAll"))
+		{
+			AP_ReadAll();
 		}
 	}
 

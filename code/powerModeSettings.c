@@ -81,24 +81,11 @@ void PMode_ReadAll(void)
 	printf("   PM3 Scheme: ");
 	pmProfDisp(pmBits);
 
-	// read Soft-clipping and over- current protection latching
-	rdData = i2cEnRdByte(SCLIP_OCPROC);
-	if ((rdData>>PM_CLIP) & 1)
-	{
-		printf("   Soft Clip: enabled\n");
-	} else
-	{
-		printf("   Soft Clip: disabled\n");
-	}
-	if ((rdData>>PM_OCP) & 1)
-	{
-		printf("   OCP: enabled\n");
-	} else
-	{
-		printf("   OCP: disabled\n");
-	}
-
 }
+
+/*
+	GENERAL FUNCTIONS
+*/
 
 void pmProfDisp(uint8_t pmBits)
 {

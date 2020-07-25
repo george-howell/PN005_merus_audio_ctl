@@ -132,7 +132,7 @@ void dispMonData(monData_s *monData)
 {
 	/* Frequency and Power Mode */
 
-	printf("   Freq Mode: 0x%.2x\n", (monData->freqPowM & MON_FREQ_M_BITS));
+	printf("   Freq Mode: 0x%.2x\n", ((monData->freqPowM>>MON_FREQ_M) & MON_FREQ_M_BITS));
 	printf("   Power Mode: 0x%.2x\n", (monData->freqPowM & MON_POW_M_BITS));
 
 	/* Main */

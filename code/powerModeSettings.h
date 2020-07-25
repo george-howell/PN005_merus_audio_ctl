@@ -15,4 +15,10 @@
 */
 void PMode_ReadAll(void);
 
+/*
+	GENERAL FUNCTIONS
+*/
+
+void pmProfDisp(uint8_t);
+
 #endif
