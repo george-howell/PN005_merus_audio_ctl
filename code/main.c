@@ -7,6 +7,7 @@
 #include "error.h"
 #include "i2c.h"
 #include "chMonitor.h"
+#include "powerModeSettings.h"
 
 int main(int argc, char** argv)
 {
@@ -47,6 +48,12 @@ int main(int argc, char** argv)
 		} else if (!strcmp(parseData->arg, "msel"))
 		{
 			Mon_MSEL();
+		}
+	} else if (parseData->opt=='p')
+	{
+		if (!strcmp(parseData->arg, "rdAll"))
+		{
+			PMode_ReadAll();
 		}
 	}
 

@@ -152,6 +152,17 @@
 // live error reg
 #define ERR_LIVE			((uint8_t)0x7C) // error
 
+
+/*
+	power monitor bit values
+*/
+
+#define PM_MAN_PM			7
+#define PM_MAN				5
+#define PM_MAN_BITS			((uint8_t)0x03)
+#define PM_CLIP				8
+#define PM_OCP				2
+
 /*
 	error register bit values
 */

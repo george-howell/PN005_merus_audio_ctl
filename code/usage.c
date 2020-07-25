@@ -52,6 +52,8 @@ void usage(void)
 	printf("      [ch0] - get channel 0 configuration\n");
 	printf("      [ch1] - get channel 0 configuration\n");
 	printf("      [msel] - get msel output configuration\n");
+	printf("  -p: power mode config\n"); 
+	printf("      [rdAll] - read all parameter values\n");
 	printf("\n");
 
 	exit(EXIT_FAILURE);
