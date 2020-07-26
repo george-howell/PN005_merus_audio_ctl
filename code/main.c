@@ -10,6 +10,7 @@
 #include "powerModeSettings.h"
 #include "audioProtect.h"
 #include "i2sFmt.h"
+#include "volLim.h"
 
 int main(int argc, char** argv)
 {
@@ -71,6 +72,12 @@ int main(int argc, char** argv)
 		if (!strcmp(parseData->arg, "rdAll"))
 		{
 			I2S_ReadAll();
+		}
+	} else if (parseData->opt=='v')
+	{
+		if (!strcmp(parseData->arg, "rdAll"))
+		{
+			VL_ReadAll();
 		}
 	}
 

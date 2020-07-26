@@ -84,7 +84,7 @@
 #define AP_OCP_CLR			7
 
 /*
-	i2s config
+	i2s config control registers
 */
 
 // pcm word format
@@ -94,7 +94,7 @@
 #define I2S_CNF_1			((uint8_t)0x36) // i2s_rightfirst, i2s_framesize, i2s_order, i2s_ws_pol, i2s_sck_pol
 
 /*
-	error register bit values
+	i2s config register bit values
 */
 
 #define I2S_PCM_BITS		((uint8_t)0x07)
@@ -106,8 +106,14 @@
 #define I2S_SCK_POL			0
 
 /*
-	volume
+	volume and limiter control registers
 */
+
+// attack and release time controls
+#define VOL_LIM_AR			((uint8_t)0x35) // audio_proc_release, audio_proc_attack, audio_proc_enable
+
+// mute audio
+#define VOL_MUTE_LIM_BY		((uint8_t)0x36) // audio_proc_mute, audio_proc_limiterEnable
 
 // master volume
 #define VOL_DB_MST			((uint8_t)0x40) // vol_db_master
@@ -122,33 +128,35 @@
 // channel volumes lsb
 #define VOL_LSB_CH0_3		((uint8_t)0x46) // vol_lsb_ch0, vol_lsb_ch1, vol_lsb_ch2, vol_lsb_ch3
 
-/*
-	limiters
-*/
-
-// attack and release time controls
-#define LIM_AR_TC			((uint8_t)0x35) // audio_proc_release, audio_proc_attack
-
-// processor bypass mux
-#define AUD_BP_MUX			((uint8_t)0x35) // audio_proc_enable
-
-// mute audio
-#define AUD_MUTE_MUX		((uint8_t)0x36) // audio_proc_mute
-
-// limiter bypass mux
-#define LIM_BP_MUX			((uint8_t)0x36) // audio_proc_limiterEnable
-
 // channel threshold db
-#define TH_DB_CH0			((uint8_t)0x47) // thr_db_ch0
-#define TH_DB_CH1			((uint8_t)0x48) // thr_db_ch1
-#define TH_DB_CH2			((uint8_t)0x49) // thr_db_ch2
-#define TH_DB_CH3			((uint8_t)0x4A) // thr_db_ch3
+#define VOL_TH_DB_CH0		((uint8_t)0x47) // thr_db_ch0
+#define VOL_TH_DB_CH1		((uint8_t)0x48) // thr_db_ch1
+#define VOL_TH_DB_CH2		((uint8_t)0x49) // thr_db_ch2
+#define VOL_TH_DB_CH3		((uint8_t)0x4A) // thr_db_ch3
 
 // channel threshold lsb
 #define TH_LSB_CH0			((uint8_t)0x4B) // thr_lsb_ch0, thr_lsb_ch1, thr_lsb_ch2, thr_lsb_ch3
 
 // limiter + clipping monitor
 #define AUDP_LC_MON			((uint8_t)0x7E) // audio_proc_limiter_mon, audio_proc_clip_mon
+
+/*
+	volume registers bit values
+*/
+#define VOL_ATT_SHIFT		6
+#define VOL_ATT_BIT			((uint8_t)0x03)
+#define VOL_REL_SHIFT		4
+#define VOL_REL_BIT			((uint8_t)0x03)
+#define VOL_BPASS_SHIFT		3
+#define VOL_MUTE_SHIFT		7
+#define VOL_BYLIM_SHIFT		4
+#define VOL_LSB_BITS		((uint8_t)0x03)
+#define VOL_LSB_CH0_SHIFT	0
+#define VOL_LSB_CH1_SHIFT	2
+#define VOL_LSB_CH2_SHIFT	4
+#define VOL_LSB_CH3_SHIFT	6
+#define VOL_LIM_ACT_SHIFT	4
+#define VOL_CLIP_SHIFT		0
 
 /*
 	Channel Monitors

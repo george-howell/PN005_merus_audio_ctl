@@ -32,7 +32,7 @@ parData_s* parseArgs(int argc, char ** argv)
 
 	int c;
 
-	while ((c = getopt(argc, argv, "b:d:e:m:p:a:i:")) != -1)
+	while ((c = getopt(argc, argv, "b:d:e:m:p:a:i:v:")) != -1)
 	    switch (c)
 	 	{
 	 		case 'b':
@@ -96,6 +96,19 @@ parData_s* parseArgs(int argc, char ** argv)
 	 			break;
 
 	 		case 'i':
+	 			if (!strcmp(optarg, "rdAll"))
+	 			{
+	 				parData->opt = c;
+	 				parData->arg = optarg;
+
+	 			} else 
+	 			{
+	 				printf("opt: %c; arg: %s\n",  c, optarg);
+	 				usageArgErr(optarg);
+	 			}
+	 			break;
+
+	 		case 'v':
 	 			if (!strcmp(optarg, "rdAll"))
 	 			{
 	 				parData->opt = c;

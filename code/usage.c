@@ -59,6 +59,8 @@ void usage(void)
 	printf("      [clrOCP] - clear the OCP latch\n");
 	printf("  -i: i2s format\n"); 
 	printf("      [rdAll] - read all parameter values\n");
+	printf("  -v: volume control and limiter registers\n"); 
+	printf("      [rdAll] - read all parameter values\n");
 	printf("\n");
 
 	exit(EXIT_FAILURE);
