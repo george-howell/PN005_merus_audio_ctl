@@ -79,6 +79,19 @@ int main(int argc, char** argv)
 		{
 			VL_ReadAll();
 		}
+	} else if (parseData->opt=='g')
+	{
+		if (!strcmp(parseData->arg, "rdAll"))
+		{
+			Err_AccumRd();
+			Mon_Ch0();
+			Mon_Ch1();
+			Mon_MSEL();
+			PMode_ReadAll();
+			AP_ReadAll();
+			I2S_ReadAll();
+			VL_ReadAll();
+		}
 	}
 
 	// close i2c device

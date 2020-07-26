@@ -145,31 +145,31 @@ void dispMonData(monData_s *monData)
 	}
 	if ((monData->main >> MON_FLY_1) & 1)
 	{
-		printf("   Cfly1: error\n");
+		printf("   Cfly1: okay\n");
 	} else
 	{
-		printf("   Cfly1: okay\n");
+		printf("   Cfly1: error\n");
 	}
 	if ((monData->main >> MON_FLY_2) & 1)
 	{
-		printf("   Cfly2: error\n");
+		printf("   Cfly2: okay\n");
 	} else
 	{
-		printf("   Cfly2: okay\n");
+		printf("   Cfly2: error\n");
 	}
 	if ((monData->main >> MON_PVDD_OK) & 1)
 	{
-		printf("   PVDD: error\n");
+		printf("   PVDD: okay\n");
 	} else
 	{
-		printf("   PVDD: okay\n");
+		printf("   PVDD: error\n");
 	}
 	if ((monData->main >> MON_VDD_OK) & 1)
 	{
-		printf("   VDD: error\n");
+		printf("   VDD: okay\n");
 	} else
 	{
-		printf("   VDD: okay\n");
+		printf("   VDD: error\n");
 	}
 	if ((monData->main >> MON_MUTE) & 1)
 	{

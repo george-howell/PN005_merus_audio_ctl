@@ -44,6 +44,8 @@ void usage(void)
 	printf("      [1,2,etc] - bus number\n");
 	printf("  -d: device address (default=0x20)\n"); 
 	printf("      [0x20,0x21,etc] - accumulated errors\n");
+	printf("  -g: general\n");
+	printf("      [rdAll] - reads all parameters from all registers\n");
 	printf("  -e: error monitor\n"); 
 	printf("      [acc] - accumulated errors\n");
 	printf("      [liv] - live errors\n");

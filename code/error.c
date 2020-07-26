@@ -113,41 +113,41 @@ void errDisplay(uint8_t data)
 	// if statement to determine specific error	
 	if ((data >> 0) & 1)
 	{
-		printf("  err: flying capacitor over-voltage error\n");
+		printf("   err: flying capacitor over-voltage error\n");
 	}
 
 	if ((data >> 1) & 1) 
 	{
-		printf("  err: over-current protection\n");
+		printf("   err: over-current protection\n");
 	}
 
 	if ((data >> 2) & 1) 
 	{
-		printf("  err: pll error\n");
+		printf("   err: pll error\n");
 	}
 
 	if ((data >> 3) & 1) 
 	{
-		printf("  err: PVDD under-voltage protection\n");
+		printf("   err: PVDD under-voltage protection\n");
 	}
 
 	if ((data >> 4) & 1) 
 	{
-		printf("  err: over-temperature warning\n");
+		printf("   err: over-temperature warning\n");
 	}
 
 	if ((data >> 5) & 1) 
 	{
-		printf("  err: over-temperature error\n");
+		printf("   err: over-temperature error\n");
 	}
 
 	if ((data >> 6) & 1) 
 	{
-		printf("  err: pin-to-pin low impedance protection\n");
+		printf("   err: pin-to-pin low impedance protection\n");
 	} 
 
 	if ((data >> 7) & 1) 
 	{
-		printf("  err: DC protection\n");
+		printf("   err: DC protection\n");
 	}
 }
