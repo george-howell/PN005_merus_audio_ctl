@@ -38,12 +38,16 @@ void usage(void)
 	printf("MA1270P_CTL\n");
 	printf("Usage:\n");
 	printf("  ma1270p_ctl -bdempa [opt]\n");
+	printf("  * other than -b and -d, only one other option may be used\n")
+	printf("  * if no -b or -d option selected, -b defaults to 1, -d defaults to 0x20\n");
+	printf("\n");
+	printf("  EXAMPLE: ma1270p_ctl -b 1 -d 0x20 -e acc\n");
 	printf("\n");
 	printf("Options:\n");
 	printf("  -b: i2c bus (default=1)\n"); 
-	printf("      [1,2,etc] - bus number\n");
+	printf("      [1,2,etc]\n");
 	printf("  -d: device address (default=0x20)\n"); 
-	printf("      [0x20,0x21,etc] - accumulated errors\n");
+	printf("      [0x20,0x21,etc]\n");
 	printf("  -g: general\n");
 	printf("      [rdAll] - reads all parameters from all registers\n");
 	printf("  -e: error monitor\n"); 
