@@ -76,7 +76,7 @@ void Mon_Ch1(void)
 	// Modulation Index
 	monData->mod = i2cEnRdByte(MON_REG_MOD_CH1);
 
-	printf("Monitor Register Channel 0: \n");
+	printf("Monitor Register Channel 1: \n");
 	dispMonData(monData);
 }
 
