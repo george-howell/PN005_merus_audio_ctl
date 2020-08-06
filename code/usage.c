@@ -38,7 +38,7 @@ void usage(void)
 	printf("MA1270P_CTL\n");
 	printf("Usage:\n");
 	printf("  ma1270p_ctl -bdempa [opt]\n");
-	printf("  * other than -b and -d, only one other option may be used\n")
+	printf("  * other than -b and -d, only one other option may be used\n");
 	printf("  * if no -b or -d option selected, -b defaults to 1, -d defaults to 0x20\n");
 	printf("\n");
 	printf("  EXAMPLE: ma1270p_ctl -b 1 -d 0x20 -e acc\n");
