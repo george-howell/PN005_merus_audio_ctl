@@ -39,21 +39,21 @@ void I2S_ReadAll(void)
 	printf("   PCM Word Fmt: ");
 	if (rdData==0)
 	{
-		printf("i2s standard (right justified 20 bits)\n");
+		printf("i2s standard\n");
 	} else if (rdData==1)
 	{
-		printf("left justified\n");
+		printf("left justified (default)\n");
 	} else if (rdData==4)
 	{
 		printf("right justified 16 bits\n");
-	} else if (rdData==6)
+	} else if (rdData==5)
 	{
 		printf("right justified 18 bits\n");
 	} 
-	// else if (rdData==0)
-	// {
-	// 	printf("right justified 20 bits\n");
-	// } 
+	else if (rdData==6)
+	{
+		printf("right justified 20 bits\n");
+	} 
 	else if (rdData==7)
 	{
 		printf("right justified 24 bits\n");
